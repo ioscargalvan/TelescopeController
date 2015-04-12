@@ -16,7 +16,8 @@ import jssc.SerialPort;
  */
 public class frmPrincipal extends javax.swing.JFrame {
 
-    
+
+
     /**
      * Creates new form frmPrincipal
      */
@@ -28,29 +29,27 @@ public class frmPrincipal extends javax.swing.JFrame {
         correctHorizontalAngle.setVisible(false);
         correctVerticalAngle.setVisible(false);
 
-        
-
     }
-    
-    public void runInt() { 
+
+    public void runInt() {
         try {
-             isOpen = serialPort.openPort();
+            isOpen = serialPort.openPort();
             boolean setParams = serialPort.setParams(9600, 8, 1, 0);
             JOptionPane.showMessageDialog(rootPane, "Port open.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "There was an error opening the port of the pc.");
         }
-        
-        
+
     }
 
-    public void closeIt() { 
+    public void closeIt() {
         try {
             boolean isClosed = serialPort.closePort();
             JOptionPane.showConfirmDialog(rootPane, "Port closed.");
         } catch (Exception e) {
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +77,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Telescope Controller");
@@ -258,6 +259,15 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Show");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Clear");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -265,11 +275,11 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton4)))
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,8 +289,15 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnShow)))
                 .addGap(46, 46, 46))
             .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -292,13 +309,17 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnShow)
                     .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         pack();
@@ -343,18 +364,19 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
 
-        JOptionPane.showMessageDialog(rootPane, "Data sent to telescope.");
+        String cadenaFinal = "2" + "=" + txtFldVerticalAngle.getText() + "@";
         
-        if (isOpen) { 
-           try {
-            serialPort.writeBytes(txtFldHorizontalAngle.getText().getBytes());
-        } catch (Exception e) {
-        } 
-        } else { 
+        if (isOpen) {
+            JOptionPane.showMessageDialog(rootPane, "Data sent to telescope.");
+            try {
+               
+                serialPort.writeString(cadenaFinal);
+            } catch (Exception e) {
+            }
+        } else {
             JOptionPane.showMessageDialog(rootPane, "The port isn't open.");
         }
-        
-        
+
 
     }//GEN-LAST:event_btnShowActionPerformed
 
@@ -416,6 +438,20 @@ public class frmPrincipal extends javax.swing.JFrame {
         closeIt();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String cadenaFinal = "1" + "=" + txtFldHorizontalAngle.getText() + "@";
+        if (isOpen) {
+            JOptionPane.showMessageDialog(rootPane, "Data sent to telescope.");
+            try {
+                serialPort.writeString(cadenaFinal);
+            } catch (Exception e) {
+            }
+        } else { 
+            JOptionPane.showMessageDialog(rootPane, "The port isn't open.");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,8 +488,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
             }
         });
-        
-       
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -465,6 +500,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -478,9 +515,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     boolean okVertical = false;
     boolean okHorizontal = false;
-    SerialPort serialPort = new SerialPort("COM3");
+    // Watchout here.
+      SerialPort serialPort = new SerialPort("COM3");
     boolean isOpen = false;
-    
-    
-}
 
+}
