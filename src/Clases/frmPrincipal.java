@@ -46,8 +46,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     public void closeIt() {
         try {
             boolean isClosed = serialPort.closePort();
-            JOptionPane.showConfirmDialog(rootPane, "Port closed.");
+            JOptionPane.showMessageDialog(rootPane, "Port closed.");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "The port is already closed.");
         }
     }
 
