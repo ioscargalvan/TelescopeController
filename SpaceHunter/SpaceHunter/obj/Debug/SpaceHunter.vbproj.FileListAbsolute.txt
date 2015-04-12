@@ -1,0 +1,12 @@
+C:\Users\Jorge\AppData\Local\Temporary Projects\SpaceHunter\bin\Debug\SpaceHunter.exe.config
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\bin\Debug\SpaceHunter.exe.config
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\bin\Debug\SpaceHunter.exe
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\bin\Debug\SpaceHunter.pdb
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\bin\Debug\SpaceHunter.xml
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.frmMain.resources
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.Resources.resources
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.rmLogin.resources
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.vbproj.GenerateResource.Cache
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.exe
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.xml
+C:\Users\Jorge\Documents\Visual Studio 2012\Projects\SpaceHunter\SpaceHunter\obj\Debug\SpaceHunter.pdb
