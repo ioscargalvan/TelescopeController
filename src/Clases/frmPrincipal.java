@@ -23,7 +23,8 @@ public class frmPrincipal extends javax.swing.JFrame {
      */
     public frmPrincipal() {
         initComponents();
-        btnShow.setEnabled(false);
+        btnShowVertical.setEnabled(false);
+        btnShowHorizontal.setEnabled(false);
         errorHorizontalAngle.setVisible(false);
         errorVerticalAngle.setVisible(false);
         correctHorizontalAngle.setVisible(false);
@@ -73,11 +74,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtFldVerticalAngle = new javax.swing.JTextField();
         correctVerticalAngle = new javax.swing.JLabel();
         errorVerticalAngle = new javax.swing.JLabel();
-        btnShow = new javax.swing.JButton();
+        btnShowVertical = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnShowHorizontal = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -231,10 +232,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addGap(32, 32, 32))))
         );
 
-        btnShow.setText("Show");
-        btnShow.addActionListener(new java.awt.event.ActionListener() {
+        btnShowVertical.setText("Show");
+        btnShowVertical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowActionPerformed(evt);
+                btnShowVerticalActionPerformed(evt);
             }
         });
 
@@ -259,14 +260,19 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Show");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnShowHorizontal.setText("Show");
+        btnShowHorizontal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnShowHorizontalActionPerformed(evt);
             }
         });
 
         jButton5.setText("Clear");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,14 +285,14 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)))
+                        .addComponent(btnShowHorizontal)))
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(btnShow)))
+                        .addComponent(btnShowVertical)))
                 .addGap(46, 46, 46))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,9 +317,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnShow)
+                    .addComponent(btnShowVertical)
                     .addComponent(jButton2)
-                    .addComponent(jButton4)
+                    .addComponent(btnShowHorizontal)
                     .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -350,19 +356,16 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        txtFldHorizontalAngle.setText("");
+      
         txtFldVerticalAngle.setText("");
-        okHorizontal = false;
         okVertical = false;
-        errorHorizontalAngle.setVisible(false);
         errorVerticalAngle.setVisible(false);
-        correctHorizontalAngle.setVisible(false);
         correctVerticalAngle.setVisible(false);
-        btnShow.setEnabled(false);
+        btnShowVertical.setEnabled(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
+    private void btnShowVerticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowVerticalActionPerformed
 
         String cadenaFinal = "2" + "=" + txtFldVerticalAngle.getText() + "@";
         
@@ -378,7 +381,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnShowActionPerformed
+    }//GEN-LAST:event_btnShowVerticalActionPerformed
 
     private void txtFldHorizontalAngleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFldHorizontalAngleKeyTyped
 
@@ -404,10 +407,10 @@ public class frmPrincipal extends javax.swing.JFrame {
             okHorizontal = false;
         }
 
-        if (okHorizontal && okVertical) {
-            btnShow.setEnabled(true);
+        if (okHorizontal) {
+            btnShowHorizontal.setEnabled(true);
         } else {
-            btnShow.setEnabled(false);
+            btnShowHorizontal.setEnabled(false);
         }
     }//GEN-LAST:event_txtFldHorizontalAngleFocusLost
 
@@ -421,10 +424,10 @@ public class frmPrincipal extends javax.swing.JFrame {
             correctVerticalAngle.setVisible(false);
             errorVerticalAngle.setVisible(true);
         }
-        if (okHorizontal && okVertical) {
-            btnShow.setEnabled(true);
+        if (okVertical) {
+            btnShowVertical.setEnabled(true);
         } else {
-            btnShow.setEnabled(false);
+            btnShowVertical.setEnabled(false);
         }
     }//GEN-LAST:event_txtFldVerticalAngleFocusLost
 
@@ -438,8 +441,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         closeIt();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnShowHorizontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowHorizontalActionPerformed
         // TODO add your handling code here:
+        
+        
         String cadenaFinal = "1" + "=" + txtFldHorizontalAngle.getText() + "@";
         if (isOpen) {
             JOptionPane.showMessageDialog(rootPane, "Data sent to telescope.");
@@ -450,7 +455,16 @@ public class frmPrincipal extends javax.swing.JFrame {
         } else { 
             JOptionPane.showMessageDialog(rootPane, "The port isn't open.");
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnShowHorizontalActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        txtFldHorizontalAngle.setText("");
+        okHorizontal = false;
+        errorHorizontalAngle.setVisible(false);
+        correctHorizontalAngle.setVisible(false);
+        btnShowHorizontal.setEnabled(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,7 +506,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnShow;
+    private javax.swing.JButton btnShowHorizontal;
+    private javax.swing.JButton btnShowVertical;
     private javax.swing.JLabel correctHorizontalAngle;
     private javax.swing.JLabel correctVerticalAngle;
     private javax.swing.JLabel errorHorizontalAngle;
@@ -500,7 +515,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
